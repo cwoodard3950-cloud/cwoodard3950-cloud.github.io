@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carson Woodard | Mechanical Engineering Portfolio</title>
+<meta name="description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and Python automation projects, plus resume.">
+<link rel="canonical" href="https://cwoodard3950-cloud.github.io/">
+<meta name="theme-color" content="#fafafa">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1014'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3ECW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carson Woodard | Mechanical Engineering Portfolio">
+<meta property="og:description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and Python automation projects, plus resume.">
+<meta property="og:url" content="https://cwoodard3950-cloud.github.io/">
+<meta property="og:image" content="https://cwoodard3950-cloud.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Carson Woodard",
+  "url": "https://cwoodard3950-cloud.github.io/",
+  "jobTitle": "Mechanical Engineering Student",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "California Baptist University" },
+  "sameAs": ["https://www.linkedin.com/in/carsonwoodard"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky minimal nav; home = hero + project card grid + compact experience; each project opens its own page (hash route) with an inverted-pyramid case study */
+:root {
+  --bg: #fafafa;
+  --surface: #f0f1f3;
+  --fg: #0e1014;
+  --muted: #5f6570;
+  --line: #e2e4e8;
+  --accent: #f0531c;
+  --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg:#0c0d10; --surface:#17191d; --fg:#f2f3f5; --muted:#9aa0aa; --line:#25282e; --accent:#ff7a4a; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg:#0c0d10; --surface:#17191d; --fg:#f2f3f5; --muted:#9aa0aa; --line:#25282e; --accent:#ff7a4a; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+
+/* nav */
+nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+.logo { font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+.logo .mark { width: 26px; height: 26px; border-radius: 7px; background: var(--fg); color: var(--bg); display: grid; place-items: center; font: 600 12px/1 var(--mono); }
+.links { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 15px; }
+.links a:not(.btn) { color: var(--muted); transition: color .15s; }
+.links a:not(.btn):hover, .links a:not(.btn)[aria-current="page"] { color: var(--fg); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--fg); color: var(--bg); padding: 9px 16px; border-radius: 999px;
+  font-weight: 500; font-size: 15px; border: 1px solid var(--fg); transition: transform .15s, background .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--fg); }
+.btn svg { width: 15px; height: 15px; }
+@media (max-width: 560px) { .links .hide-sm { display: none; } .links { gap: 14px; } }
+
+/* hero */
+.hero { padding-block: clamp(64px, 12vw, 128px) clamp(48px, 8vw, 88px); }
+.avail { display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--mono); color: var(--muted); border: 1px solid var(--line); padding: 7px 12px; border-radius: 999px; }
+.avail i { width: 7px; height: 7px; border-radius: 50%; background: #22a861; box-shadow: 0 0 0 3px color-mix(in srgb, #22a861 22%, transparent); }
+.hero h1 { font-size: clamp(42px, 7.4vw, 84px); line-height: 1; letter-spacing: -0.045em; font-weight: 600; margin: 28px 0 24px; max-width: 14ch; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--muted); }
+.hero p { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 54ch; margin: 0 0 32px; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* section heads */
+.sec { padding-block: 40px 72px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.sec-head h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.03em; margin: 0; }
+.sec-head span { font: 400 13px/1 var(--mono); color: var(--muted); }
+
+/* project grid */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+@media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+.card { display: grid; gap: 16px; padding: 12px 12px 20px; border-radius: 18px; transition: background .2s; }
+.card:hover { background: var(--surface); }
+.card .art { aspect-ratio: 16/10; max-width: 100%; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; display: grid; place-items: center; transition: transform .3s; }
+.card:hover .art { background: var(--bg); }
+.card .art svg { width: 78%; height: auto; }
+.card .meta { padding-inline: 4px; display: grid; gap: 6px; }
+.card .row1 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.card h3 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
+.card .ctx { font: 400 12px/1 var(--mono); color: var(--muted); white-space: nowrap; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.card .go { font-size: 14px; color: var(--fg); font-weight: 500; display: inline-flex; gap: 6px; align-items: center; margin-top: 4px; }
+.card .go b { transition: transform .2s; font-weight: 500; }
+.card:hover .go b { transform: translateX(4px); color: var(--accent); }
+
+/* svg art tokens */
+.art .s { stroke: var(--fg); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.art .t { stroke: var(--muted); fill: none; stroke-width: 1.5; stroke-dasharray: 4 5; }
+.art .f { fill: var(--fg); }
+.art .a { fill: var(--accent); }
+.art .as { stroke: var(--accent); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.art .m { fill: var(--muted); }
+.art text { font: 500 13px var(--mono); fill: var(--muted); }
+
+/* process knowledge */
+.know { border-top: 1px solid var(--line); }
+.know-row { display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.know-row h3 { margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.know-row p { margin: 0; color: var(--muted); max-width: 62ch; }
+@media (max-width: 640px) { .know-row { grid-template-columns: 1fr; gap: 4px; } }
+
+/* experience list */
+.exp { border-top: 1px solid var(--line); }
+.exp-row { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 20px; padding-block: 22px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.exp-row strong { font-weight: 600; letter-spacing: -0.01em; }
+.exp-row span { color: var(--muted); }
+.exp-row time { font: 400 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .exp-row { grid-template-columns: 1fr; gap: 4px; } }
+
+/* project page */
+.back { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 15px; margin-top: 40px; }
+.back:hover { color: var(--fg); }
+.p-head { padding-block: 32px 36px; }
+.p-head .ctx { font: 500 13px/1 var(--mono); color: var(--accent); }
+.p-head h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 600; margin: 14px 0 18px; max-width: 18ch; text-wrap: balance; }
+.p-head p { font-size: 20px; color: var(--muted); max-width: 58ch; margin: 0; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+.facts div { padding: 18px 16px 18px 0; min-width: 0; }
+.facts dt { font: 400 12px/1 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.facts dd { margin: 0; font-weight: 500; }
+@media (max-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
+.hero-art { aspect-ratio: 16/8; max-width: 100%; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 56px; overflow: hidden; }
+.hero-art svg { width: min(560px, 80%); height: auto; }
+.body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px 56px; max-width: 900px; }
+.body h2 { font-size: 15px; font-weight: 600; margin: 4px 0 0; }
+.body .txt { color: var(--muted); font-size: 17px; max-width: 62ch; }
+.body .txt p { margin: 0 0 14px; }
+.body .txt ul { margin: 0; padding-left: 20px; }
+.body .txt li { margin-bottom: 8px; }
+.body .txt li::marker { color: var(--accent); }
+.body .div { grid-column: 1 / -1; border-top: 1px solid var(--line); margin-block: 16px; }
+.big { font-size: 40px; font-weight: 600; letter-spacing: -0.04em; color: var(--fg); line-height: 1.1; }
+@media (max-width: 720px) { .body { grid-template-columns: 1fr; gap: 8px; } .body .div { margin-block: 20px; } }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-block: 80px 40px; }
+.pager a { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 4px; transition: border-color .15s; }
+.pager a:hover { border-color: var(--fg); }
+.pager span { font: 400 12px/1 var(--mono); color: var(--muted); }
+.pager strong { font-weight: 600; }
+.pager .next { text-align: right; }
+
+/* resume */
+.resume { max-width: 820px; padding-block: 48px 40px; }
+.r-top { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.r-top h1 { font-size: 40px; letter-spacing: -0.04em; margin: 0 0 6px; font-weight: 600; }
+.r-top p { margin: 0; color: var(--muted); }
+.r-sec { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 24px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+.r-sec h2 { font: 500 12px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0; }
+.r-item + .r-item { margin-top: 22px; }
+.r-item .hd { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.r-item strong { font-weight: 600; }
+.r-item time { font: 400 13px var(--mono); color: var(--muted); }
+.r-item .sub { color: var(--muted); }
+.r-item ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+.r-item li { margin-bottom: 4px; }
+@media (max-width: 640px) { .r-sec { grid-template-columns: 1fr; gap: 10px; } }
+.note { font-size: 14px; color: var(--muted); background: var(--surface); border-radius: 12px; padding: 14px 16px; margin-top: 24px; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 56px; padding-block: 64px; }
+.about h1 { font-size: clamp(36px, 5vw, 52px); letter-spacing: -0.04em; font-weight: 600; margin: 0 0 24px; line-height: 1.05; }
+.about p { color: var(--muted); font-size: 17px; margin: 0 0 16px; max-width: 58ch; }
+.side-list { display: grid; gap: 24px; align-content: start; }
+.side-list h3 { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; }
+.side-list p { color: var(--fg); font-size: 16px; margin: 0; }
+.veh { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.veh li { display: grid; grid-template-columns: 52px minmax(0,1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.veh .yr { font: 400 13px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* coursework */
+.courses { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.6fr); gap: 40px; align-items: start; }
+.courses h3 { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 14px; display: flex; align-items: center; gap: 10px; }
+.courses h3 i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.cl { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.cl li { padding: 12px 0; border-bottom: 1px solid var(--line); font-weight: 500; letter-spacing: -0.01em; }
+.cl li span { color: var(--muted); font-weight: 400; }
+.cl.two { column-count: 2; column-gap: 28px; }
+.cl.two li { break-inside: avoid; }
+@media (max-width: 720px) { .courses { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 520px) { .cl.two { column-count: 1; } }
+.count { font-size: 44px; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 32px; } }
+
+/* footer */
+footer { border-top: 1px solid var(--line); margin-top: 40px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 36px; }
+footer h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.03em; font-weight: 600; margin: 0 0 8px; }
+footer p { margin: 0; color: var(--muted); }
+.contacts { display: grid; gap: 8px; align-content: start; }
+.contacts div { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.contacts .k { font: 400 12px/1 var(--mono); color: var(--muted); width: 70px; }
+.contacts .v { user-select: all; font-weight: 500; }
+.copy { font: 500 12px/1 var(--mono); border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 6px 9px; border-radius: 999px; cursor: pointer; }
+.copy:hover { color: var(--fg); border-color: var(--fg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .view:not([hidden]) { animation: rise .45s ease both; }
+  @keyframes rise { from { opacity: .4; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#home"><span class="mark">CW</span>Carson Woodard</a>
+    <div class="links">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#experience" data-nav="experience" class="hide-sm">Experience</a>
+      <a href="#about" data-nav="about">About</a>
+      <a class="btn" href="#resume" data-nav="resume">Resume
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5h5l3 3v8H4z"/><path d="M9 2.5v3h3"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="view" id="v-home">
+  <div class="wrap">
+    <section class="hero">
+      <span class="avail"><i></i>Open to full-time roles · 2027</span>
+      <h1>Mechanical engineer <em>building how things get made.</em></h1>
+      <p>ME student at California Baptist University with an Industrial Systems Engineering minor. I work across semiconductor manufacturing, quality, CAD, and Python automation.</p>
+      <div class="ctas">
+        <a class="btn" href="#work">View projects</a>
+        <a class="btn ghost" href="#resume">Resume</a>
+      </div>
+    </section>
+
+    <section class="sec" id="s-work">
+      <div class="sec-head"><h2>Selected work</h2><span id="pcount"></span></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="sec" id="s-know">
+      <div class="sec-head"><h2>Semiconductor process knowledge</h2></div>
+      <div class="know">
+        <div class="know-row"><h3>Process development</h3><p>Design of experiments in JMP (custom design, center points, interaction terms), solder paste printing, reflow profiling with a KIC thermal profiler</p></div>
+        <div class="know-row"><h3>Quality</h3><p>FMEA, 8D corrective action, SPC, root cause analysis, process capability analysis, Lean manufacturing, process flows, audit preparation</p></div>
+        <div class="know-row"><h3>Assembly equipment</h3><p>Automated paste printer, Fineplacer pick-and-place, FineTech flip-chip bonder, Heller reflow oven, KIC thermal profiler</p></div>
+        <div class="know-row"><h3>Inspection and standards</h3><p>Keyence microscope, J-STD-002D solderability</p></div>
+        <div class="know-row"><h3>Advanced packaging</h3><p>Flip-chip, copper pillar bumps, UBM and passivation layers, fan-out wafer-level packaging (self-study)</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s-exp">
+      <div class="sec-head"><h2>Experience</h2><a class="btn ghost" href="#resume">Full resume</a></div>
+      <div class="exp">
+        <div class="exp-row"><strong>Operations Manufacturing Sustaining Intern</strong><span>pSemi, A Murata Company</span><time>May 2026 – now</time></div>
+        <div class="exp-row"><strong>Statics Tutor and Thermodynamics TA</strong><span>California Baptist University</span><time>Sep 2025 – now</time></div>
+        <div class="exp-row"><strong>Parts Manufacturing and Assembly Assistant</strong><span>PrintSafe, Inc.</span><time>Jun 2024 – Aug 2025</time></div>
+        <div class="exp-row"><strong>Service Room Manager</strong><span>Discount Tire</span><time>Jul 2022 – Jul 2024</time></div>
+        <div class="exp-row"><strong>Student Leader <span style="font-weight:400">(volunteer)</span></strong><span>Awana Clubs</span><time>Dec 2024 – now</time></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s-classes">
+      <div class="sec-head"><h2>Coursework</h2><span>B.S. Mechanical Engineering · ISE minor</span></div>
+      <div class="courses">
+        <div>
+          <h3><i></i>In session · Fall 2026</h3>
+          <ul class="cl">
+            <li>Machine Design</li>
+            <li>Signals and Systems</li>
+            <li>Fundamentals of Industrial Systems Engineering</li>
+            <li>Quality Control <span>· directed study on process capability analysis</span></li>
+            <li>Capstone Design</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Completed</h3>
+          <ul class="cl two">
+            <li>Statics</li>
+            <li>Dynamics</li>
+            <li>Thermodynamics</li>
+            <li>Heat and Mass Transfer</li>
+            <li>Fluid Dynamics</li>
+            <li>Materials and Manufacturing</li>
+            <li>Engineering Design and Documentation</li>
+            <li>Computer Aided Design</li>
+            <li>Linear Algebra and Differential Equations</li>
+            <li>Physics II</li>
+            <li>Junior Design</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- PROJECT DETAIL -->
+<div class="view" id="v-project" hidden><div class="wrap" id="project"></div></div>
+
+<!-- RESUME -->
+<div class="view" id="v-resume" hidden>
+  <div class="wrap resume">
+    <div class="r-top">
+      <div><h1>Carson Woodard</h1><p>Mechanical Engineering · San Diego, CA</p></div>
+      <a class="btn ghost" href="#home">Back to portfolio</a>
+    </div>
+    <div class="r-sec"><h2>Education</h2>
+      <div class="r-item"><div class="hd"><strong>California Baptist University</strong><time>Sep 2023 – Apr 2027 (expected)</time></div><div class="sub">B.S. Mechanical Engineering (ABET accredited) · Minor in Industrial Systems Engineering · GPA 3.53</div>
+        <ul>
+          <li>Relevant coursework: Materials and Manufacturing, Quality Control, Fundamentals of Industrial Systems Engineering, Engineering Design and Documentation, Computer Aided Design, Thermodynamics, Linear Algebra and Differential Equations.</li>
+          <li>Quality Control directed study (Fall 2026, in progress): process capability analysis using specification limits (USL/LSL) and capability charts.</li>
+        </ul></div>
+    </div>
+    <div class="r-sec"><h2>Experience</h2>
+      <div>
+        <div class="r-item"><div class="hd"><strong>pSemi, A Murata Company · Operations Manufacturing Sustaining, Intern</strong><time>May 2026 – Present</time></div><div class="sub">San Diego, CA</div>
+          <ul>
+            <li>Designed and executed a JMP design of experiments (3 factors, main effects and two-factor interactions, center points) to optimize a die-level solderability test procedure on 75 µm bumps, improving repeatability against JEDEC J-STD-002D. Used a solder paste printer, Heller reflow oven, and FineTech flip-chip bonder.</li>
+            <li>Performed root cause analysis on a reflow wetting failure on 75 µm-bump die-level devices. Measured actual zone profiles with a KIC thermal profiler and adjusted oven setpoints to bring PWI back within spec.</li>
+            <li>Built a SolidWorks model of a system-in-package as the input to a thermo-mechanical simulation in Ansys Mechanical, using scripts and VBA macros to extract GDS data and place bump geometry, and checking the model against manufacturing files (materials, layer thicknesses, via geometry).</li>
+            <li>Applied SPC, FMEA, 8D corrective action, and Lean manufacturing in a high-volume semiconductor clean room, working across the Manufacturing Sustaining and New Product Introduction (NPI) teams.</li>
+            <li>Built an Excel BOM conversion tracker and supported audit preparation for the manufacturing area.</li>
+          </ul></div>
+        <div class="r-item"><div class="hd"><strong>California Baptist University · Statics Tutor and Thermodynamics Teaching Assistant</strong><time>Sep 2025 – Present</time></div><div class="sub">Riverside, CA</div>
+          <ul>
+            <li>Tutor and train 10+ engineering students per week, one-on-one and in groups, on Newton's second law, free body diagrams, moments, trusses, frames, and stress analysis.</li>
+            <li>Grade about 20 Thermodynamics group lab reports per week.</li>
+            <li>Built a Python and Claude API grading pipeline that cut grading time from 15 to 3 minutes per report, with every report still manually reviewed.</li>
+          </ul></div>
+        <div class="r-item"><div class="hd"><strong>PrintSafe, Inc. · Parts Manufacturing and Assembly Assistant</strong><time>Jun 2024 – Aug 2025</time></div><div class="sub">San Diego, CA</div>
+          <ul>
+            <li>Produced and assembled precision components for specialty printers, including intricate assemblies.</li>
+            <li>Tapped threads for print head support systems.</li>
+            <li>Kept inventory records accurate to keep production supplied.</li>
+            <li>Streamlined packing and shipping of printer accessories, coordinating UPS and FedEx shipments and checking quality before distribution.</li>
+          </ul></div>
+        <div class="r-item"><div class="hd"><strong>Discount Tire · Service Room Manager</strong><time>Jul 2022 – Jul 2024</time></div><div class="sub">Poway, CA</div>
+          <ul>
+            <li>Performed final quality assurance inspections on every vehicle before release, checking tires for wear, damage, and proper inflation.</li>
+            <li>Ran the daily workflow in the service room and kept technicians producing quality work efficiently.</li>
+            <li>Found flaws in the service procedure and adjusted it, reducing technician downtime and raising productivity.</li>
+            <li>Led a team of technicians and set standards for communication and performance.</li>
+          </ul></div>
+        <div class="r-item"><div class="hd"><strong>Awana Clubs · Student Leader (volunteer)</strong><time>Dec 2024 – Present</time></div>
+          <ul><li>Lead a weekly small group of six middle school boys; help run a K–8 club.</li></ul></div>
+      </div>
+    </div>
+    <div class="r-sec"><h2>Skills</h2>
+      <div class="r-item"><ul style="margin:0">
+        <li><strong style="color:var(--fg)">CAD &amp; analysis:</strong> SolidWorks (parts, assemblies, simulation), AutoCAD, ANSYS Fluent and Thermal, technical drawing and GD&amp;T, VBA macros, FEA, topology optimization</li>
+        <li><strong style="color:var(--fg)">Process:</strong> DOE in JMP, solder paste printing, reflow oven and KIC thermal profiling, flip-chip bonding, Keyence inspection</li>
+        <li><strong style="color:var(--fg)">Quality:</strong> SPC, FMEA, 8D corrective action, root cause analysis, process capability analysis, Lean manufacturing, audit preparation, J-STD-002D</li>
+        <li><strong style="color:var(--fg)">Software:</strong> Python, MATLAB, RStudio, JMP, Excel, Claude API, V-model and MBSE (Modelio), Linux</li>
+        <li><strong style="color:var(--fg)">Shop and hardware:</strong> Machining, MIG welding, machine assembly, thread tapping, metal casting, 3D printing (FDM), FARO arm metrology, Raspberry Pi and MAVLink/ArduCopter</li>
+      </ul></div>
+    </div>
+    <p class="note">A downloadable PDF version will go here once it's uploaded.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="view" id="v-about" hidden>
+  <div class="wrap about">
+    <div>
+      <h1>I like engineering I can put my hands on.</h1>
+      <p>I'm a mechanical engineering student at California Baptist University, graduating in April 2027 with a minor in Industrial Systems Engineering. My internship at pSemi put me on a semiconductor manufacturing line, where I learned how much good engineering depends on process, data, and follow-through.</p>
+      <p>Most of my projects end up mixing a few things: CAD and physical parts, plus software that removes the repetitive work.</p>
+      <p>Away from the desk I'm usually outside. I love to surf, run, cycle, and swim, and I spend a lot of time working on my truck and dirt bikes. I also love film photography, and I make things in the shop: jewelry, machined parts, and 3D prints.</p>
+    </div>
+    <div class="side-list">
+      <div><h3>Training for</h3><div class="count" id="race">—</div><p style="color:var(--muted);margin-top:6px">days until my marathon on Dec 13, 2026</p></div>
+      <div><h3>Vehicles I work on</h3>
+        <ul class="veh">
+          <li><span class="yr">2002</span>Ram 2500 Cummins</li>
+          <li><span class="yr">2008</span>BMW 335i</li>
+          <li><span class="yr">2020</span>Yamaha VMAX</li>
+          <li><span class="yr">2021</span>Kawasaki Z125 Pro</li>
+          <li><span class="yr">—</span>Dirt bikes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div><h2>Let's talk.</h2><p>Open to full-time roles in manufacturing, quality, and design.</p></div>
+    <div class="contacts">
+      <div><span class="k">Email</span><span class="v" id="em">carsonwoodard3950@gmail.com</span><button class="copy" type="button" id="copy-em">Copy</button></div>
+      <div><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/carsonwoodard" target="_blank" rel="noopener">linkedin.com/in/carsonwoodard</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function gearPath(cx,cy,r,n,rot){var s=2*Math.PI/n,root=r*0.78,pts=[];for(var i=0;i<n;i++){var a=rot+i*s;[[-0.30,root],[-0.17,r],[0.17,r],[0.30,root]].forEach(function(q){var t=a+q[0]*s;pts.push((cx+q[1]*Math.cos(t)).toFixed(1)+' '+(cy+q[1]*Math.sin(t)).toFixed(1));});}return 'M'+pts.join(' L')+' Z';}
+
+var ART = {
+  pump: '<svg viewBox="0 0 400 240"><path class="s" d="'+gearPath(160,118,52,12,0)+'"/><path class="s" d="'+gearPath(253,118,52,12,Math.PI/12)+'"/><circle class="f" cx="160" cy="118" r="7"/><circle class="f" cx="253" cy="118" r="7"/><line class="as" x1="40" y1="118" x2="100" y2="118"/><polyline class="as" points="92,110 100,118 92,126"/><line class="as" x1="312" y1="118" x2="364" y2="118"/><polyline class="as" points="356,110 364,118 356,126"/><text x="90" y="222">12 teeth · 20° pressure angle</text></svg>',
+  doe: '<svg viewBox="0 0 400 240"><rect class="s" x="100" y="100" width="120" height="100"/><rect class="s" x="160" y="50" width="120" height="100"/><line class="s" x1="100" y1="100" x2="160" y2="50"/><line class="s" x1="220" y1="100" x2="280" y2="50"/><line class="s" x1="100" y1="200" x2="160" y2="150"/><line class="s" x1="220" y1="200" x2="280" y2="150"/>' + [[100,100],[220,100],[100,200],[220,200],[160,50],[280,50],[160,150],[280,150]].map(function(p){return '<circle class="f" cx="'+p[0]+'" cy="'+p[1]+'" r="6"/>';}).join('') + '<circle class="a" cx="190" cy="125" r="8"/><text x="100" y="226">3 factors · center point</text></svg>',
+  reflow: '<svg viewBox="0 0 400 240"><line class="s" x1="40" y1="200" x2="370" y2="200"/><line class="s" x1="40" y1="200" x2="40" y2="30"/><line class="t" x1="40" y1="96" x2="370" y2="96"/><path class="as" d="M40 190 C80 188 100 150 130 140 L220 126 C250 120 262 52 292 48 C322 46 336 120 366 188"/><circle class="a" cx="292" cy="48" r="5"/><text x="46" y="88">liquidus</text><text x="54" y="222">preheat</text><text x="150" y="222">soak</text><text x="248" y="222">reflow</text><text x="318" y="222">cool</text></svg>',
+  haps: '<svg viewBox="0 0 400 240"><line class="s" x1="40" y1="200" x2="370" y2="200"/><rect class="f" x="60" y="184" width="50" height="16" rx="2"/><line class="s" x1="85" y1="184" x2="110" y2="150"/><line class="s" x1="150" y1="200" x2="150" y2="120"/><circle class="a" cx="150" cy="120" r="5"/><path class="t" d="M120 120 A30 30 0 0 1 180 120"/><path class="t" d="M100 120 A50 50 0 0 1 200 120"/><path class="t" d="M80 120 A70 70 0 0 1 220 120"/><path class="as" d="M110 150 C180 150 250 110 308 72"/><path class="f" d="M340 70 L312 56 L320 70 L312 84 Z"/><text x="110" y="228">detect · track · intercept</text></svg>',
+  sip: '<svg viewBox="0 0 400 240"><rect class="s" x="70" y="40" width="260" height="150" rx="6"/>' + (function(){var s='';for(var r=0;r<4;r++)for(var c=0;c<7;c++){s+='<circle class="'+((r===1&&c===4)?'a':'m')+'" cx="'+(105+c*32)+'" cy="'+(70+r*30)+'" r="9"'+((r===1&&c===4)?'':' opacity=".55"')+'/>';}return s;})() + '<line class="t" x1="70" y1="212" x2="330" y2="212"/><text x="168" y="232">die · bump map</text></svg>',
+  grader: '<svg viewBox="0 0 400 240"><rect class="s" x="50" y="56" width="90" height="120" rx="6"/><rect class="s" x="62" y="44" width="90" height="120" rx="6" style="fill:var(--surface)"/><line class="t" x1="76" y1="72" x2="136" y2="72"/><line class="t" x1="76" y1="92" x2="130" y2="92"/><line class="t" x1="76" y1="112" x2="136" y2="112"/><polyline class="as" points="82,138 96,150 124,126"/><line class="s" x1="176" y1="110" x2="226" y2="110"/><polyline class="s" points="216,100 226,110 216,120"/><rect class="s" x="250" y="50" width="110" height="120" rx="6"/><line class="s" x1="250" y1="80" x2="360" y2="80"/><line class="s" x1="250" y1="110" x2="360" y2="110"/><line class="s" x1="250" y1="140" x2="360" y2="140"/><line class="s" x1="300" y1="50" x2="300" y2="170"/><text x="140" y="214">15 min → 3 min</text></svg>',
+  mail: '<svg viewBox="0 0 400 240"><polyline class="s" points="60,50 200,190 340,50"/>' + [[60,50],[107,97],[153,143],[200,190],[247,143],[293,97],[340,50]].map(function(p,i){return '<circle class="'+(i===3?'a':'f')+'" cx="'+p[0]+'" cy="'+p[1]+'" r="8"/>';}).join('') + '<line class="t" x1="107" y1="97" x2="293" y2="97"/><line class="t" x1="153" y1="143" x2="247" y2="143"/><text x="22" y="34">requirements</text><text x="300" y="34">validation</text></svg>',
+  access: '<svg viewBox="0 0 400 240"><line class="s" x1="60" y1="206" x2="340" y2="206"/><circle class="s" cx="200" cy="115" r="80"/><circle class="t" cx="200" cy="115" r="32"/>' + [0,1,2,3,4,5].map(function(k){var a=k*Math.PI/3-Math.PI/2,x=200+80*Math.cos(a),y=115+80*Math.sin(a);return '<line class="s" x1="200" y1="115" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'"/><rect class="'+(k===3?'a':'f')+'" x="'+(x-11).toFixed(1)+'" y="'+(y-9).toFixed(1)+'" width="22" height="18" rx="3"/>';}).join('') + '<circle class="f" cx="200" cy="115" r="7"/><text x="112" y="230">crank · chain · carousel</text></svg>',
+  ring: '<svg viewBox="0 0 400 240"><ellipse class="s" cx="200" cy="140" rx="92" ry="74"/><ellipse class="t" cx="200" cy="140" rx="76" ry="60"/><rect class="s" x="176" y="30" width="48" height="66" rx="16" style="fill:var(--surface)"/><rect class="a" x="186" y="42" width="28" height="42" rx="10" opacity=".9"/><text x="296" y="226">18k · Au</text></svg>',
+  print: '<svg viewBox="0 0 400 240"><rect class="t" x="130" y="60" width="140" height="110"/><rect class="s" x="122" y="52" width="156" height="126"/><line class="as" x1="278" y1="115" x2="306" y2="115"/><polyline class="as" points="298,107 306,115 298,123"/><line class="as" x1="122" y1="115" x2="94" y2="115"/><polyline class="as" points="102,107 94,115 102,123"/><text x="140" y="206">nominal vs printed</text></svg>'
+};
+
+var P = [
+  { id:'haps', title:'HAPS counter-drone system', ctx:'Senior capstone', short:'A team capstone to detect, track, and intercept fixed-wing drones. Early stage.',
+    role:'Airframe, now electrical', time:'Fall 2026 – Spring 2027', team:'Argus · 8-person team', tools:'YOLO, Raspberry Pi, MAVLink, SolidWorks, Ansys',
+    outcome:'A Hostile Aircraft Protection System: a ground-based system that detects and tracks fixed-wing drones, then launches an interceptor. The eight-person team will deliver measured test data for each subsystem plus a simulated end-to-end engagement.',
+    problem:'The client is NSWC Corona, through an Educational Partnership Agreement, and the team has a $2,500 university budget. After a client interview this fall, the scope narrowed: detection and tracking come first, an operator approves every launch, and the sensors mount on existing structures such as rooftops instead of a standalone tower.',
+    did:['Started on the interceptor airframe: CAD, additive manufacturing, structural analysis, and Ansys simulation.','Adapted to the scope change after the client interview, which moved the design to a disposable interceptor, likely a modified off-the-shelf airframe.','Moved to the electrical side of the system and am learning electrical design from scratch.','Built a bench test setup to validate a custom-trained YOLO detection model and the Raspberry Pi to flight controller (MAVLink) communication before integration into a fixed-wing interceptor.','Next: the mechanical build starts second semester, with range testing targeted at a JIFX event at Camp Roberts next year.'],
+    learned:'In progress.' },
+  { id:'doe', title:'Paste-print DOE for solderability', ctx:'pSemi internship', short:'A designed experiment to make die-level solderability testing repeatable on 75 µm bumps.',
+    role:'Experiment design', time:'Summer 2026', team:'Manufacturing Sustaining', tools:'JMP, paste printer, Heller reflow oven, FineTech flip-chip bonder',
+    outcome:'Designed a DOE in JMP to find the paste-print settings that give consistent deposits on known good die, so solderability results can be trusted and compared. The goal was better repeatability against JEDEC J-STD-002D.',
+    problem:'Known good die are hard to test reliably. Printing paste by hand through a manual stencil causes graping, bridging, and uneven deposits on 75 µm bumps, which adds noise to the dewetting, nonwetting, and pinhole checks that J-STD-002D requires.',
+    did:['Moved the print step from a manual stencil to an automated paste printer with repeatable, adjustable settings.','Chose three continuous factors: print speed, print force, and separation speed. Fixed the pass count at one pass and regenerated the design without it, removing its interaction terms.','Built a custom design in JMP with all main effects and two-factor interactions: 16 base runs plus 3 center points to check for curvature.','Set two responses: bump coverage (maximize, at least 95%) and transfer efficiency (hit a 100% target).','Tracked bridging as a print-quality flag, kept separate from the spec pass/fail criteria.'],
+    learned:'How to scope a DOE by separating what the experiment optimizes from what the spec governs. I learned the method from first principles on this project.' },
+  { id:'reflow', title:'Reflow wetting failure root cause', ctx:'pSemi internship', short:'Found and fixed a reflow wetting failure on 75 µm-bump die with a KIC thermal profiler and the Heller oven.',
+    role:'Root cause analysis', time:'Summer 2026', team:'Manufacturing Sustaining', tools:'Heller reflow oven, KIC thermal profiler, Keyence microscope',
+    outcome:'Found and corrected a reflow wetting failure on 75 µm-bump die-level devices. I measured the actual zone profiles with a KIC thermal profiler and adjusted the Heller oven setpoints to bring the process window index (PWI) back within spec.',
+    problem:'Die-level devices with 75 µm bumps showed a wetting failure after reflow. Reflow turns printed paste into a solder joint, and a good print can still fail if the thermal profile is off, so the oven had to be checked as well as the print.',
+    did:['Ran a root cause analysis on the wetting failure.','Measured the actual temperature profile in each oven zone with a KIC thermal profiler.','Adjusted the Heller oven setpoints until PWI was back within spec.','Worked on the oven profile alongside the paste-print DOE so both steps of the process were tuned together.','Inspected results under the Keyence microscope.'],
+    learned:'Measuring the profile the parts actually see is the first step in finding the root cause of a reflow problem. The setpoints alone do not show it.' },
+  { id:'sip', title:'SiP package 3D model', ctx:'pSemi internship', short:'A layer-by-layer SolidWorks model of a system-in-package, built from GDS layout files.',
+    role:'Designer', time:'May 2026 – now', team:'Manufacturing Sustaining', tools:'SolidWorks, Ansys Mechanical, VBA, GDS',
+    outcome:'Built a 3D model of a flip-chip die and its full bump stack as the input to a thermo-mechanical simulation in Ansys Mechanical. Each layer is modeled as its own part and mated in an assembly.',
+    problem:'The package only existed as 2D layout data. A 3D model was needed, starting from bump positions and die dimensions buried in GDS files.',
+    did:['Extracted bump coordinates and die dimensions from GDS files and re-centered them on the SolidWorks origin.','Used AI to write the extraction scripts, and VBA macros that place the bump geometry automatically.','Modeled the copper pillar, solder cap, UBM, and passivation layers as separate parts, with the UBM following the real stepped profile.','Checked the model against manufacturing files for materials, layer thicknesses, and via geometry.'],
+    learned:'Advanced packaging structure in detail. I also read <em>Fan-Out Wafer-Level Packaging</em> on my own to understand the process behind the geometry.' },
+  { id:'grader', title:'Lab report grader', ctx:'CBU · Thermo TA', short:'A grading pipeline that cut my review time per lab report from about 15 minutes to 3.',
+    role:'Builder', time:'Fall 2026', team:'Built for my TA role', tools:'Python, Claude API, Excel',
+    big:'15 → 3 min', bigNote:'review time per report',
+    outcome:'A Python tool that de-identifies student submissions, grades them against the rubric with the Claude API, and fills an Excel gradebook for the instructor to review before grades go into Canvas.',
+    problem:'I grade about 20 group lab reports a week. Doing that by hand took around 15 minutes per report.',
+    did:['Strip student names from each submission before grading.','Score each report against the course rubric with the Claude API.','Write results into an Excel gradebook. I still review every report myself, and the instructor reviews every grade before it goes into Canvas.'],
+    learned:'How to automate a repetitive process without taking the human out of the loop.' },
+  { id:'access', title:'Access Storage garage carousel', ctx:'Junior Design · EGR 302', short:'A crank-operated carousel that brings overhead garage storage within reach.',
+    role:'Team liaison, design and analysis', time:'Junior year', team:'Group of 6', tools:'SolidWorks, FEA, prototyping',
+    outcome:'A Ferris-wheel-style storage carousel for garages, driven by a chain and operated with a hand crank, designed so people with limited reach can use overhead space.',
+    problem:'Overhead storage is hard to use for people with limited physical reach, so much of the space in a garage goes unused.',
+    did:['Worked through the full design thinking process: empathize, define, ideate, prototype, and test.','Modeled the carousel in SolidWorks and validated the design with FEA.','Built and tested a prototype. Testing showed chain friction and asymmetric loading as the main challenges.','Served as the team liaison for the group.'],
+    learned:'Chain friction and asymmetric loading showed up in testing, which a CAD model alone would not have told me.' },
+  { id:'pump', title:'Remanufacturing a miniature gear pump', ctx:'EGR 344 · Fall 2025', short:'Measured and scanned a purchased gear pump, rebuilt it in CAD, printed it, and compared flow and cost.',
+    role:'CAD, characterization, testing', time:'Nov – Dec 2025', team:'Group of 4', tools:'Faro arm, calipers, SolidWorks, 3D printing',
+    big:'0.50 vs 1.63 L/min', bigNote:'printed pump vs purchased pump at 12 V',
+    outcome:'The team measured a purchased 12 V plastic gear pump, rebuilt its housing and gears in SolidWorks, printed them in PLA, and ended with a working pump. The printed pump moved about 31% as much water as the original at 12 V. The full printed pump cost 19.9% less, and the plastic alone cost 94.5% less, but cost per unit of flow was about 2.6 times higher.',
+    problem:'The goal was to learn the principles and tolerances behind a small injection-molded pump by analyzing it, measuring it, rebuilding it, and retesting it.',
+    did:['Ran the initial characterization of the original pump at 3, 6, 9, and 12 V with three runs per voltage. Water was weighed over a timed interval instead of read by volume, which gave more precise mass flow, volume flow, and exit velocity.','Measured and scanned the original pump with a FARO arm. The first scans were poor quality, so the team researched ways to increase accuracy and took the small features with calipers.','Did all of the CAD, rebuilding the housing and gears in SolidWorks over several revisions for printing in PLA. To account for printer tolerance, printed a 10 mm cube and compared its actual and theoretical dimensions.','Chose straight spur gears with 12 teeth and a 20° pressure angle instead of copying the helical shape, for less friction over less contact area.','Tested the printed pump the same way and compared flow, plastic cost, and full pump cost against the original.','Listed the main error sources, including caliper and stopwatch human error and the layered print finish, and the steps used to reduce them.'],
+    learned:'Small tolerance differences in a printed part lead to large differences in performance. Injection molding wins on speed and scale, while printing wins on upfront cost for a single part. The printed set took about 10 hours of labor.' },
+  { id:'mail', title:'Campus mail delivery robot', ctx:'ISE coursework', short:'Systems design for an autonomous robot that delivers mail and packages to dorm doors.',
+    role:'Systems design', time:'Fall 2026', team:'Class project', tools:'V-model, MBSE',
+    outcome:'A system design for delivering letters and packages directly to individual dorm doors with an autonomous robot.',
+    problem:'CBU currently runs a mailroom where students pick up mail after it is sorted. There is no delivery process.',
+    did:['Defined the scope: letters and packages, delivered door to door.','Ran a stakeholder analysis.','Structured the design with the V-model and model-based systems engineering.'],
+    learned:'In progress.' },
+  { id:'ring', title:'Gold solitaire ring', ctx:'Personal', short:'Hand-made from reclaimed 18k gold: cast, rolled, and annealed.',
+    role:'Maker', time:'2026', team:'Personal project', tools:'Casting, rolling mill',
+    outcome:'A solitaire ring hand-made from reclaimed 18k yellow gold, set with an elongated cushion stone.',
+    problem:'Start from an existing 18k ring and turn it into new stock without losing material.',
+    did:['Melted and cast the source ring.','Worked the stock through a rolling mill.','Annealed between passes to keep the metal workable.'],
+    learned:'How work hardening and annealing behave in a real material, not just on a stress-strain curve.' },
+  { id:'print', title:'3D printing and dimensional characterization', ctx:'Personal', short:'Designing parts for a Bambu P1S and characterizing how much it expands them in the print plane.',
+    role:'Designer', time:'2025 – now', team:'Personal project', tools:'SolidWorks, Bambu P1S, PLA',
+    outcome:'I design parts in SolidWorks, print them in PLA on a Bambu P1S, and measure how the printer changes their dimensions in the print plane.',
+    problem:'FDM parts rarely come out at the dimensions in the CAD model, which breaks any part that has to mate with something else.',
+    did:['Designed test parts in SolidWorks.','Printed a 10 mm by 10 mm cube in PLA and compared its actual dimensions with the model to characterize how much the printed part expands in the print plane.','Fed the measured expansion back into the SolidWorks models so mating parts fit, including the printed gear pump.'],
+    learned:'Tolerancing for a real process instead of an ideal one.' }
+];
+
+function card(p){
+  return '<a class="card" href="#'+p.id+'"><div class="art">'+ART[p.id]+'</div><div class="meta"><div class="row1"><h3>'+p.title+'</h3><span class="ctx">'+p.ctx+'</span></div><p>'+p.short+'</p><span class="go">Read more <b>→</b></span></div></a>';
+}
+document.getElementById('grid').innerHTML = P.map(card).join('');
+document.getElementById('pcount').textContent = P.length + ' projects';
+
+function projectPage(p){
+  var i = P.indexOf(p), prev = P[(i-1+P.length)%P.length], next = P[(i+1)%P.length];
+  return '<a class="back" href="#work">← All projects</a>' +
+    '<div class="p-head"><div class="ctx">'+p.ctx+'</div><h1>'+p.title+'</h1><p>'+p.short+'</p></div>' +
+    '<dl class="facts"><div><dt>Role</dt><dd>'+p.role+'</dd></div><div><dt>Timeline</dt><dd>'+p.time+'</dd></div><div><dt>Team</dt><dd>'+p.team+'</dd></div><div><dt>Tools</dt><dd>'+p.tools+'</dd></div></dl>' +
+    '<div class="hero-art art">'+ART[p.id]+'</div>' +
+    '<div class="body">' +
+      (p.big ? '<h2>Result</h2><div class="txt"><div class="big">'+p.big+'</div><p>'+p.bigNote+'</p></div><div class="div"></div>' : '') +
+      '<h2>Outcome</h2><div class="txt"><p>'+p.outcome+'</p></div><div class="div"></div>' +
+      '<h2>The problem</h2><div class="txt"><p>'+p.problem+'</p></div><div class="div"></div>' +
+      '<h2>What I did</h2><div class="txt"><ul>'+p.did.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul></div><div class="div"></div>' +
+      '<h2>What I learned</h2><div class="txt"><p>'+p.learned+'</p></div>' +
+    '</div>' +
+    '<div class="pager"><a href="#'+prev.id+'"><span>← Previous</span><strong>'+prev.title+'</strong></a><a class="next" href="#'+next.id+'"><span>Next →</span><strong>'+next.title+'</strong></a></div>';
+}
+
+var views = { home: document.getElementById('v-home'), project: document.getElementById('v-project'), resume: document.getElementById('v-resume'), about: document.getElementById('v-about') };
+function show(name){ Object.keys(views).forEach(function(k){ views[k].hidden = k !== name; }); }
+function route(){
+  var h = (location.hash || '#home').slice(1);
+  var p = P.filter(function(x){ return x.id === h; })[0];
+  document.querySelectorAll('[data-nav]').forEach(function(a){ a.removeAttribute('aria-current'); });
+  if (p) { document.getElementById('project').innerHTML = projectPage(p); show('project'); window.scrollTo(0,0); return; }
+  if (h === 'resume' || h === 'about') { show(h); window.scrollTo(0,0); }
+  else {
+    show('home');
+    var target = h === 'work' ? 's-work' : h === 'experience' ? 's-exp' : null;
+    if (target) { var el = document.getElementById(target); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80 }); }
+    else window.scrollTo(0,0);
+  }
+  var cur = document.querySelector('[data-nav="'+h+'"]'); if (cur) cur.setAttribute('aria-current','page');
+}
+window.addEventListener('hashchange', route);
+route();
+
+var days = Math.round((new Date(2026,11,13) - new Date(new Date().setHours(0,0,0,0))) / 86400000);
+document.getElementById('race').textContent = days > 0 ? days : 'Done';
+
+document.getElementById('copy-em').addEventListener('click', function(){
+  var b = this, t = document.getElementById('em').textContent;
+  try { navigator.clipboard.writeText(t).then(function(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy'; },1500); }, sel); } catch(e){ sel(); }
+  function sel(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('em')); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+});
+</script>
+</body>
+</html>
