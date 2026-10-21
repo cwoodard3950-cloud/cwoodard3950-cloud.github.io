@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carson Woodard | Mechanical Engineering Portfolio</title>
-<meta name="description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and Python automation projects, plus resume.">
+<title>Carson Woodard | Mechanical Engineer</title>
+<meta name="description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and AI-assisted automation projects, plus resume.">
 <link rel="canonical" href="https://cwoodard3950-cloud.github.io/">
 <meta name="google-site-verification" content="HhBusrLyCxvAGyyx8Ex_pXHkBfEA9v5ZweFZ08YrdrU">
 <meta name="google-site-verification" content="jmxPmHUQ91jTGbxnGqdoZGUWVsQvTyXyzet6vBeIMQ8">
 <meta name="theme-color" content="#fafafa">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1014'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3ECW%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Carson Woodard | Mechanical Engineering Portfolio">
-<meta property="og:description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and Python automation projects, plus resume.">
+<meta property="og:title" content="Carson Woodard | Mechanical Engineer">
+<meta property="og:description" content="Portfolio of Carson Woodard, mechanical engineering student: semiconductor manufacturing, quality, CAD, and AI-assisted automation projects, plus resume.">
 <meta property="og:url" content="https://cwoodard3950-cloud.github.io/">
 <meta property="og:image" content="https://cwoodard3950-cloud.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -244,8 +244,8 @@ footer p { margin: 0; color: var(--muted); }
   <div class="wrap">
     <section class="hero">
       <span class="avail"><i></i>Open to full-time roles · 2027</span>
-      <h1>Mechanical engineer <em>building how things get made.</em></h1>
-      <p>ME student at California Baptist University with an Industrial Systems Engineering minor. I work across semiconductor manufacturing, quality, CAD, and Python automation.</p>
+      <h1>Mechanical Engineer</h1>
+      <p>ME student at California Baptist University with an Industrial Systems Engineering minor. I work across semiconductor manufacturing, quality, CAD, and AI-assisted automation.</p>
       <div class="ctas">
         <a class="btn" href="#work">View projects</a>
         <a class="btn ghost" href="#resume">Resume</a>
@@ -344,7 +344,7 @@ footer p { margin: 0; color: var(--muted); }
           <ul>
             <li>Tutor and train 10+ engineering students per week, one-on-one and in groups, on Newton's second law, free body diagrams, moments, trusses, frames, and stress analysis.</li>
             <li>Grade about 20 Thermodynamics group lab reports per week.</li>
-            <li>Built a Python and Claude API grading pipeline that cut grading time from 15 to 3 minutes per report, with every report still manually reviewed.</li>
+            <li>Used AI to build a Claude API grading pipeline that cut grading time from 15 to 3 minutes per report, with every report still manually reviewed.</li>
           </ul></div>
         <div class="r-item"><div class="hd"><strong>PrintSafe, Inc. · Parts Manufacturing and Assembly Assistant</strong><time>Jun 2024 – Aug 2025</time></div><div class="sub">San Diego, CA</div>
           <ul>
@@ -369,7 +369,7 @@ footer p { margin: 0; color: var(--muted); }
         <li><strong style="color:var(--fg)">CAD &amp; analysis:</strong> SolidWorks (parts, assemblies, simulation), AutoCAD, ANSYS Fluent and Thermal, technical drawing and GD&amp;T, VBA macros, FEA, topology optimization</li>
         <li><strong style="color:var(--fg)">Process:</strong> DOE in JMP, solder paste printing, reflow oven and KIC thermal profiling, flip-chip bonding, Keyence inspection</li>
         <li><strong style="color:var(--fg)">Quality:</strong> SPC, FMEA, 8D corrective action, root cause analysis, process capability analysis, Lean manufacturing, audit preparation, J-STD-002D</li>
-        <li><strong style="color:var(--fg)">Software:</strong> Python, MATLAB, RStudio, JMP, Excel, Claude API, V-model and MBSE (Modelio), Linux</li>
+        <li><strong style="color:var(--fg)">Software:</strong> MATLAB, RStudio, JMP, Excel, Claude API, V-model and MBSE (Modelio), Linux</li>
         <li><strong style="color:var(--fg)">Shop and hardware:</strong> Machining, MIG welding, machine assembly, thread tapping, metal casting, 3D printing (FDM), FARO arm metrology, Raspberry Pi and MAVLink/ArduCopter</li>
       </ul></div>
     </div>
@@ -453,9 +453,9 @@ var P = [
     did:['Extracted bump coordinates and die dimensions from GDS files and re-centered them on the SolidWorks origin.','Used AI to write the extraction scripts, and VBA macros that place the bump geometry automatically.','Modeled the copper pillar, solder cap, UBM, and passivation layers as separate parts, with the UBM following the real stepped profile.','Checked the model against manufacturing files for materials, layer thicknesses, and via geometry.'],
     learned:'Advanced packaging structure in detail. I also read <em>Fan-Out Wafer-Level Packaging</em> on my own to understand the process behind the geometry.' },
   { id:'grader', title:'Lab report grader', ctx:'CBU · Thermo TA', short:'A grading pipeline that cut my review time per lab report from about 15 minutes to 3.',
-    role:'Builder', time:'Fall 2026', team:'Built for my TA role', tools:'Python, Claude API, Excel',
+    role:'Builder', time:'Fall 2026', team:'Built for my TA role', tools:'Claude API, AI-assisted coding, Excel',
     big:'15 → 3 min', bigNote:'review time per report',
-    outcome:'A Python tool that de-identifies student submissions, grades them against the rubric with the Claude API, and fills an Excel gradebook for the instructor to review before grades go into Canvas.',
+    outcome:'A tool I built with AI that de-identifies student submissions, grades them against the rubric with the Claude API, and fills an Excel gradebook for the instructor to review before grades go into Canvas.',
     problem:'I grade about 20 group lab reports a week. Doing that by hand took around 15 minutes per report.',
     did:['Strip student names from each submission before grading.','Score each report against the course rubric with the Claude API.','Write results into an Excel gradebook. I still review every report myself, and the instructor reviews every grade before it goes into Canvas.'],
     learned:'How to automate a repetitive process without taking the human out of the loop.' },
