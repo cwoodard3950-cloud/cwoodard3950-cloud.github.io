@@ -344,7 +344,7 @@ footer p { margin: 0; color: var(--muted); }
           <ul>
             <li>Tutor and train 10+ engineering students per week, one-on-one and in groups, on Newton's second law, free body diagrams, moments, trusses, frames, and stress analysis.</li>
             <li>Grade about 20 Thermodynamics group lab reports per week.</li>
-            <li>Used AI to build a Claude API grading pipeline that cut grading time from 15 to 3 minutes per report, with every report still manually reviewed.</li>
+            <li>Used AI to build Lab Grader, a desktop app on GitHub that suggests rubric scores with the Claude API and cut grading time from 15 to 3 minutes per report, with every score still reviewed by a person.</li>
           </ul></div>
         <div class="r-item"><div class="hd"><strong>PrintSafe, Inc. · Parts Manufacturing and Assembly Assistant</strong><time>Jun 2024 – Aug 2025</time></div><div class="sub">San Diego, CA</div>
           <ul>
@@ -428,7 +428,7 @@ var ART = {
 };
 
 var P = [
-  { id:'haps', title:'HAPS counter-drone system', ctx:'Senior capstone', short:'A team capstone to detect, track, and intercept fixed-wing drones. Early stage.',
+  { id:'haps', title:'HAPS Counter UAV System', ctx:'Senior capstone', short:'A team capstone to detect, track, and intercept fixed-wing drones. Early stage.',
     role:'Airframe, now electrical', time:'Fall 2026 – Spring 2027', team:'Argus · 8-person team', tools:'YOLO, Raspberry Pi, MAVLink, SolidWorks, Ansys',
     outcome:'A Hostile Aircraft Protection System: a ground-based system that detects and tracks fixed-wing drones, then launches an interceptor. The eight-person team will deliver measured test data for each subsystem plus a simulated end-to-end engagement.',
     problem:'The client is NSWC Corona, through an Educational Partnership Agreement, and the team has a $2,500 university budget. After a client interview this fall, the scope narrowed: detection and tracking come first, an operator approves every launch, and the sensors mount on existing structures such as rooftops instead of a standalone tower.',
@@ -452,13 +452,13 @@ var P = [
     problem:'The package only existed as 2D layout data. A 3D model was needed, starting from bump positions and die dimensions buried in GDS files.',
     did:['Extracted bump coordinates and die dimensions from GDS files and re-centered them on the SolidWorks origin.','Used AI to write the extraction scripts, and VBA macros that place the bump geometry automatically.','Modeled the copper pillar, solder cap, UBM, and passivation layers as separate parts, with the UBM following the real stepped profile.','Checked the model against manufacturing files for materials, layer thicknesses, and via geometry.'],
     learned:'Advanced packaging structure in detail. I also read <em>Fan-Out Wafer-Level Packaging</em> on my own to understand the process behind the geometry.' },
-  { id:'grader', title:'Lab report grader', ctx:'CBU · Thermo TA', short:'A grading pipeline that cut my review time per lab report from about 15 minutes to 3.',
-    role:'Builder', time:'Fall 2026', team:'Built for my TA role', tools:'Claude API, AI-assisted coding, Excel',
+  { id:'grader', title:'Lab Grader app', ctx:'CBU · Thermo TA', short:'Started as a folder of scripts, now a desktop app on GitHub that cut my review time per lab report from about 15 minutes to 3.',
+    role:'Builder', time:'Fall 2026', team:'Built for my TA role', tools:'Claude API, AI-assisted coding, GitHub, Canvas',
     big:'15 → 3 min', bigNote:'review time per report',
-    outcome:'A tool I built with AI that de-identifies student submissions, grades them against the rubric with the Claude API, and fills an Excel gradebook for the instructor to review before grades go into Canvas.',
-    problem:'I grade about 20 group lab reports a week. Doing that by hand took around 15 minutes per report.',
-    did:['Strip student names from each submission before grading.','Score each report against the course rubric with the Claude API.','Write results into an Excel gradebook. I still review every report myself, and the instructor reviews every grade before it goes into Canvas.'],
-    learned:'How to automate a repetitive process without taking the human out of the loop.' },
+    outcome:'A Windows and Mac desktop app, built with AI, that suggests a score for each rubric criterion on a group lab report and shows the reasoning and the exact spot in the report behind it. I approve or change every score, and the app exports grade files for Canvas. It installs from GitHub and updates itself.',
+    problem:'I grade about 20 group lab reports a week, and by hand each one took around 15 minutes. My first fix was a folder of scripts feeding an Excel gradebook. It worked, but it was fragile and only I could run it.',
+    did:['Replaced the script-and-folder setup with a desktop app: import the Canvas roster, drop in submissions, and files are matched to lab groups automatically.','Redacts cover pages, names, emails, and ID numbers before a report is sent to the AI.','Grades against that lab\'s own instructions. Each score comes with reasoning, a confidence level, and a quote the app highlights in the PDF.','Every score is reviewed by a person, and only fully reviewed groups go into the Canvas import file.','Published installers on GitHub with automatic updates.'],
+    learned:'A script that works for me is not a tool someone else can use. Setup, privacy, and human review had to be built in, not added later.' },
   { id:'access', title:'Access Storage garage carousel', ctx:'Junior Design · EGR 302', short:'A crank-operated carousel that brings overhead garage storage within reach.',
     role:'Team liaison, design and analysis', time:'Junior year', team:'Group of 6', tools:'SolidWorks, FEA, prototyping',
     outcome:'A Ferris-wheel-style storage carousel for garages, driven by a chain and operated with a hand crank, designed so people with limited reach can use overhead space.',
