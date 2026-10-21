@@ -202,7 +202,6 @@ nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
 .cl.two li { break-inside: avoid; }
 @media (max-width: 720px) { .courses { grid-template-columns: 1fr; gap: 32px; } }
 @media (max-width: 520px) { .cl.two { column-count: 1; } }
-.count { font-size: 44px; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1; }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 32px; } }
 
 /* footer */
@@ -387,7 +386,6 @@ footer p { margin: 0; color: var(--muted); }
       <p>Away from the desk I'm usually outside. I love to surf, run, cycle, and swim, and I spend a lot of time working on my truck and dirt bikes. I also love film photography, and I make things in the shop: jewelry, machined parts, and 3D prints.</p>
     </div>
     <div class="side-list">
-      <div><h3>Training for</h3><div class="count" id="race">—</div><p style="color:var(--muted);margin-top:6px">days until my marathon on Dec 13, 2026</p></div>
       <div><h3>Vehicles I work on</h3>
         <ul class="veh">
           <li><span class="yr">2002</span>Ram 2500 Cummins</li>
@@ -532,9 +530,6 @@ function route(){
 }
 window.addEventListener('hashchange', route);
 route();
-
-var days = Math.round((new Date(2026,11,13) - new Date(new Date().setHours(0,0,0,0))) / 86400000);
-document.getElementById('race').textContent = days > 0 ? days : 'Done';
 
 document.getElementById('copy-em').addEventListener('click', function(){
   var b = this, t = document.getElementById('em').textContent;
